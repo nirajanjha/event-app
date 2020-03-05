@@ -1,0 +1,93 @@
+extends ../../admin_layout
+
+block styles 
+
+block content 
+	// left column
+	div()
+		i.fa.fa-info
+		span(style="background:blue; color:white; ")=msg
+	.col-md-9
+		// general form elements
+		.card.card-primary
+			.card-header
+				h3.card-title Add Event
+			// /.card-header
+			// form start
+			form(role='form', method='POST' action="/admin/event/add" enctype="multipart/form-data")
+				.card-body
+					.form-group
+						label(for='exampleInputEmail1') Event Title
+						input#exampleInputEmail1.form-control(type='text', placeholder='Enter Title', name="title")
+					.form-group
+						label(for='exampleInputPassword1') Venue
+						input#exampleInputPassword1.form-control(type='text', placeholder='Enter Venue' name="venue")
+					.form-group
+						label Start Date
+						.input-group
+							.input-group-prepend
+								span.input-group-text
+									i.far.fa-calendar-alt
+							input.form-control(type='text', id="datepicker" data-inputmask-alias='datetime', data-inputmask-inputformat='dd/mm/yyyy', data-mask='' name="start_date")
+						// /.input group
+
+					.form-group
+						label End Date
+						.input-group
+							.input-group-prepend
+								span.input-group-text
+									i.far.fa-calendar-alt
+							input.form-control(type='text', id="datepicker2" data-inputmask-alias='datetime', data-inputmask-inputformat='dd/mm/yyyy', data-mask='' name="end_date")
+						// /.input group
+
+					.form-group
+						label Start Time
+						.input-group
+							.input-group-prepend
+								span.input-group-text
+									i.far.fa-clock
+							input.form-control(type='text', id="timepicker" name="event_time")
+						// /.input group
+
+
+					.form-group
+						label(for='exampleInputFile') Event Image
+						.input-group
+							input(type='file', name="cover")
+
+					.form-group
+						label(for='exampleInputFile') Event Description
+
+						.mb-3
+							textarea.textarea(placeholder='Place some text here', style='width: 100%; height: 200px; font-size: 14px; line-height: 40px; border: 1px solid #dddddd; padding: 10px;' name="description")
+
+					.form-group
+						.custom-control.custom-switch.custom-switch-off-danger.custom-switch-on-success
+							input#customSwitch3.custom-control-input(type='checkbox' name="publish")
+							label.custom-control-label(for='customSwitch3') Publish
+
+				// /.card-body
+				.card-footer
+					button.btn.btn-primary(type='submit') Submit
+		
+
+block scripts
+	// Date picker
+	link(rel='stylesheet', href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
+	//- script(src='https://code.jquery.com/jquery-1.12.4.js')
+	script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+	// Time picker
+	link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css')
+	script(src='//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js')
+	script.
+		$(function() {
+			$("#datepicker").datepicker();
+		});
+
+		$(function() {
+			$("#datepicker2").datepicker();
+		});
+
+		$(function() {
+			$("#timepicker").timepicker({});
+		});

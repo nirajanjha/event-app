@@ -1,0 +1,79 @@
+extends ../../admin_layout
+
+block styles
+
+block content
+	// Content Header (Page header)
+	.content-header
+		.container-fluid
+			.row.mb-2
+				.col-sm-6
+					h1.m-0.text-dark Dashboard
+				// /.col
+				.col-sm-6
+					ol.breadcrumb.float-sm-right
+						li.breadcrumb-item
+							a(href='#') Home
+						//- li.breadcrumb-item.active Dashboard v1
+	
+	.card
+		.card-header
+			h3.card-title Projects Detail
+			.card-tools
+				button.btn.btn-tool(type='button', data-card-widget='collapse', data-toggle='tooltip', title='Collapse')
+					i.fas.fa-minus
+				button.btn.btn-tool(type='button', data-card-widget='remove', data-toggle='tooltip', title='Remove')
+					i.fas.fa-times
+		.card-body
+			.row
+				.col-12.col-md-12.col-lg-12.order-1.order-md-2
+					.text-muted
+
+						- function slice(text){
+						-	var text1 = text.replace(/<[^>]*>?/gm, '');
+						-	var slicedText = text1.slice(0, 200)
+						-	return slicedText;
+						- }
+
+						p(style="margin-bottom: .5rem;")
+							b Cover
+						div(style="width: 200px; overflow : hidden;")
+							img(src="/uploads/images/"+item.cover style="width: 100%;")
+
+						p(style="margin-bottom: .5rem;")
+							b Title: 
+						p.text-sm=item.eventTitle
+						
+						p(style="margin-bottom: .5rem;")
+							b Venue: 
+						p.text-sm=item.venue
+
+
+
+						p(style="margin-bottom: .5rem;")
+							b Created By:
+						p.text-sm=item.eventCreator
+
+						p(style="margin-bottom: .5rem;")
+							b Start Date:
+						p.text-sm=item.startDate
+
+						p(style="margin-bottom: .5rem;")
+							b End Date:
+						p.text-sm=item.endDate
+
+						p(style="margin-bottom: .5rem;")
+							b Start Time:
+						p.text-sm=item.eventTime
+
+
+						p(style="margin-bottom: .5rem;")
+							b Description:
+						p.text-sm=slice(item.description)
+						
+						p(style="margin-bottom: .5rem;")
+							b Publish: 
+						p.text-sm=item.publish
+
+block scripts
+

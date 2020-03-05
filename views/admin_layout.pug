@@ -1,0 +1,199 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		title Event App
+		// Tell the browser to be responsive to screen width
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+
+		link(rel='stylesheet', href='/admin/plugins/bootstrap/css/bootstrap.css')
+		// Font Awesome
+		link(rel='stylesheet', href='/admin/plugins/fontawesome-free/css/all.min.css')
+		// Ionicons
+		link(rel='stylesheet', href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')
+		// Tempusdominus Bbootstrap 4
+		//- link(rel='stylesheet', href='/admin/plugins/bootstrap/css/bootstrap.min.css')
+		//- // iCheck
+
+		//- link(rel='stylesheet', href='/admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')
+
+		//- link(rel='stylesheet', href='/admin/plugins/bootstrap/css/bootstrap-theme.min.css')
+		//- link(rel='stylesheet', href='/admin/assets/vendor/magnific-popup/magnific-popup.css')
+		//- link(rel='stylesheet', href='/admin/assets/vendor/bootstrap-datepicker/css/datepicker3.css')
+
+		//- // Theme CSS
+		//- link(rel='stylesheet', href='/admin/assets/stylesheets/theme.css')
+		//- // Skin CSS
+		//- link(rel='stylesheet', href='/admin/assets/stylesheets/skins/default.css')
+		//- link(rel='stylesheet', href='/admin/assets/stylesheets/skins/extensions.css')
+
+		//- // Theme Custom CSS
+		//- link(rel='stylesheet', href='/admin/assets/stylesheets/theme-custom.css')
+
+		//- link(rel='stylesheet', href='/admin/assets/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css')
+		//- link(rel='stylesheet', href='/admin/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css')
+		//- link(rel='stylesheet', href='/admin/assets/vendor/morris/morris.css')
+		//- link(rel='stylesheet', href='/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css')
+		//- // JQVMap
+		//- link(rel='stylesheet', href='/admin/plugins/jqvmap/jqvmap.min.css')
+		//- // Theme style
+		//- link(rel='stylesheet', href='/admin/dist/css/adminlte.min.css')
+		//- // overlayScrollbars
+		//- link(rel='stylesheet', href='/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')
+		// Daterange picker
+		link(rel='stylesheet', href='/admin/plugins/daterangepicker/daterangepicker.css')
+		// summernote
+		link(rel='stylesheet', href='/admin/plugins/summernote/summernote-bs4.css')
+		// Google Font: Source Sans Pro
+		link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700', rel='stylesheet')
+
+		block styles
+
+	body.hold-transition.sidebar-mini.layout-fixed
+		.wrapper
+			// Navbar
+			nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
+				// Left navbar links
+				ul.navbar-nav
+					li.nav-item
+						a.nav-link(data-widget='pushmenu', href='#')
+							i.fas.fa-bars
+				// SEARCH FORM
+				form.form-inline.ml-3
+					.input-group.input-group-sm
+						input.form-control.form-control-navbar(type='search', placeholder='Search', aria-label='Search')
+						.input-group-append
+							button.btn.btn-navbar(type='submit')
+								i.fas.fa-search
+				// Right navbar links
+				ul.navbar-nav.ml-auto
+					// Messages Dropdown Menu
+					li.nav-item.dropdown
+						a.nav-link(data-toggle='dropdown', href='#')
+							i.far.fa-user
+						//- span.badge.badge-danger.navbar-badge abc
+						.dropdown-menu.dropdown-menu-lg.dropdown-menu-right
+							
+							a.dropdown-item.dropdown-footer(href='/users/logout') 
+								i.far.fa-user(style="margin-right: 30px")
+								span Logout
+					
+					
+			// /.navbar
+
+			// Main Sidebar Container
+			aside.main-sidebar.sidebar-dark-primary.elevation-4
+				// Brand Logo
+				a.brand-link(href='index3.html')
+					img.brand-image.img-circle.elevation-3(src='/admin/dist/img/AdminLTELogo.png', alt='AdminLTE Logo', style='opacity: .8')
+					span.brand-text.font-weight-light Event App
+				// Sidebar
+				.sidebar
+					// Sidebar user panel (optional)
+					.user-panel.mt-3.pb-3.mb-3.d-flex
+						.image
+							img.img-circle.elevation-2(src='/admin/dist/img/user2-160x160.jpg', alt='User Image')
+						.info
+							a.d-block(href='#')=user.username
+					// Sidebar Menu
+					nav.mt-2
+						ul.nav.nav-pills.nav-sidebar.flex-column(data-widget='treeview', role='menu', data-accordion='false')
+							//
+								Add icons to the links using the .nav-icon class
+								with font-awesome or any other icon font library
+							li.nav-item.has-treeview.menu-open
+								a.nav-link.active(href='/admin')
+									i.nav-icon.fas.fa-tachometer-alt
+									p
+										| Dashboard
+								
+							
+							
+							li.nav-item.has-treeview
+								a.nav-link(href='#')
+									i.nav-icon.far.fa-calendar-alt
+									p
+										| Events
+										i.right.fas.fa-angle-left
+								ul.nav.nav-treeview
+									li.nav-item
+										a.nav-link(href='/admin/event/add')
+											i.far.fa-circle.nav-icon
+											p Add Event
+									li.nav-item
+										a.nav-link(href='/admin/event/unpublished')
+											i.far.fa-circle.nav-icon
+											p List Unpublished
+									li.nav-item
+										a.nav-link(href='/admin/event/published')
+											i.far.fa-circle.nav-icon
+											p List Published
+
+							
+							li.nav-header LABELS
+							li.nav-item
+								a.nav-link(href='#')
+									i.nav-icon.far.fa-circle.text-danger
+									p.text Important
+							li.nav-item
+								a.nav-link(href='#')
+									i.nav-icon.far.fa-circle.text-warning
+									p Warning
+							li.nav-item
+								a.nav-link(href='#')
+									i.nav-icon.far.fa-circle.text-info
+									p Informational
+					// /.sidebar-menu
+					// /.sidebar
+
+			// Content Wrapper. Contains page content
+			.content-wrapper
+			
+				block content
+					
+			footer.main-footer
+				strong
+					| Copyright © 2019 
+					a(href='#') Event App
+					| .
+				|     All rights reserved.
+			// Control Sidebar
+			aside.control-sidebar.control-sidebar-dark
+				// Control sidebar content goes here
+				// /.control-sidebar
+				// ./wrapper
+				// jQuery
+			script(src='/admin/plugins/jquery/jquery.min.js')
+			// jQuery UI 1.11.4
+			script(src='/admin/plugins/jquery-ui/jquery-ui.min.js')
+			// Resolve conflict in jQuery UI tooltip with Bootstrap tooltip
+			script.
+				$.widget.bridge('uibutton', $.ui.button)
+			// Bootstrap 4
+			script(src='/admin/plugins/bootstrap/js/bootstrap.bundle.min.js')
+			// ChartJS
+			script(src='plugins/chart.js/Chart.min.js')
+			// Sparkline
+			script(src='plugins/sparklines/sparkline.js')
+			// JQVMap
+			script(src='plugins/jqvmap/jquery.vmap.min.js')
+			script(src='/admin/plugins/jqvmap/maps/jquery.vmap.usa.js')
+			// jQuery Knob Chart
+			script(src='/admin/plugins/jquery-knob/jquery.knob.min.js')
+			// daterangepicker
+			script(src='/admin/plugins/moment/moment.min.js')
+			// Tempusdominus Bootstrap 4
+			script(src='/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')
+			// Summernote
+			script(src='/admin/plugins/summernote/summernote-bs4.min.js')
+			// overlayScrollbars
+			script(src='/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')
+			// AdminLTE App
+			script(src='/admin/dist/js/adminlte.js')
+			// AdminLTE dashboard demo (This is only for demo purposes)
+			script(src='/admin/dist/js/pages/dashboard.js')
+			// AdminLTE for demo purposes
+			script(src='/admin/dist/js/demo.js')
+
+			block scripts

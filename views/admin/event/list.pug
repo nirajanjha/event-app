@@ -1,0 +1,61 @@
+extends ../../admin_layout
+
+block styles
+
+block content
+	// Content Header (Page header)
+	.content-header
+		.container-fluid
+			.row.mb-2
+				.col-sm-6
+					h1.m-0.text-dark Dashboard
+				// /.col
+				.col-sm-6
+					ol.breadcrumb.float-sm-right
+						li.breadcrumb-item
+							a(href='#') Home
+						//- li.breadcrumb-item.active Dashboard v1
+	//- Actual content here
+	section.content
+		.row
+			.col-12
+				.card
+					.card-header
+						h3.card-title Responsive Hover Table
+						.card-tools
+							.input-group.input-group-sm(style='width: 150px;')
+								input.form-control.float-right(type='text', name='table_search', placeholder='Search')
+								.input-group-append
+									button.btn.btn-default(type='submit')
+										i.fas.fa-search
+					// /.card-header
+					.card-body.table-responsive.p-0
+						table.table.table-hover
+							thead
+								tr
+									th Title
+									th Start Date
+									th End Date 
+									th Timing
+									th Creator
+									th Status
+									th Actions
+							tbody
+								each item in items 
+									tr
+										td=item.eventTitle
+										td=item.startDate
+										td=item.endDate
+										td=item.eventTime
+										td=item.eventCreator
+										if item.publish
+											td
+												span.tag.tag-success(style="background: green; padding: 2px; color: white; border-radius: 3px;") Approved
+										td
+											a(href="/admin/event/view/"+item.reference)
+												i.far.fa-eye
+
+
+
+block scripts
+

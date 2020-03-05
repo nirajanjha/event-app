@@ -1,0 +1,54 @@
+doctype html
+html
+	head
+		title Page Title
+		link(rel='stylesheet', type='text/css', href='/stylesheets/index.css')
+		link(rel='stylesheet', type='text/css', href='/stylesheets/bootstrap-grid.min.css')
+		link(href='https://fonts.googleapis.com/css?family=Oswald|Roboto+Mono&display=swap', rel='stylesheet')
+		link(rel='stylesheet', href='/admin/plugins/fontawesome-free/css/all.min.css')
+
+		block styles 
+	body
+		block content
+		.top-section
+			.content
+				h1(style="font-size: 50px;") Event App
+				h1 All Events
+				p Visit us for all kind of tech events hapening in your area.
+		.event-section
+			.container
+				.row
+					each item in items
+						.col-md-4
+							.wrapper
+								.img-cover
+									img(src='/uploads/images/'+item.cover, alt='')
+								h2=item.eventTitle
+								p(style="margin: 0; font-size: 16px;") 
+									i.fa.fa-calendar(style="margin-right: 10px;")
+									|Start:
+									span(style="color: grey; margin-left: 7px;")=item.startDate	
+
+								p(style="margin: 0; font-size: 16px;") 
+									i.fa.fa-clock(style="margin-right: 10px;")
+									|Time:
+									span(style="color: grey; margin-left: 7px;")=item.eventTime
+
+								p(style="margin: 0; font-size: 16px;") 
+									i.fa.fa-calendar(style="margin-right: 10px;")
+									|End:
+									span(style="color: grey; margin-left: 7px;")=item.endDate	
+								p(style="margin: 0; font-size: 16px;") 
+									i.fa.fa-map-marker(style="margin-right: 10px;")
+									|Venue:
+									span(style="color: grey; margin-left: 7px;")=item.venue	
+								p(style="margin-buttom : 20px;")
+									a(href="/view/"+item.reference) view full 
+										i.fa.fa-chevron-right
+
+							
+		.footer
+			.container
+				p Copyright@Cool-monk
+
+		block scripts
